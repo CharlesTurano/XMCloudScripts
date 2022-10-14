@@ -8,9 +8,8 @@ foreach($project in $projects) {
         Write-Host "Found project $($project.name) with id $($project.id) created on $(Get-Date $project.createdAt)"
 
         Select-XMCProject -ProjectId $project.id | Out-Null
-        $environments = Get-XMCEnvironments
 
-        foreach($environment in $environments) {
+        foreach($environment in $project.environments) {
             Write-Host "  Found environment $($environment.name) with id $($environment.id)"
             
             Select-XMCEnvironment -environmentId $environment.id | Out-Null
